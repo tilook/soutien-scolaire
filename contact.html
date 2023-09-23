@@ -1,0 +1,359 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Me contacter</title>
+	<link rel = "icon" href=https://clg-le-ried.monbureaunumerique.fr/lectureFichiergw.do?ID_FICHIER=10003
+	type = "image/x-icon">
+
+<!-- Nécessaire pour le bon fonctionnement de la police Dancing Script : -->
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<style>
+.centrer {
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-top: auto;
+text-align: center;
+}
+
+#header {
+	position: fixed;
+  background-color: #f0f0f0;
+  padding: 1%;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  transition: width 0.3s ease;
+}
+#header h1 {
+  margin: 0;
+  font-size: 24px;
+  transition: margin-left 0.3s ease;
+  font-family: "Montserrat", sans-serif; /* Exemple de police personnalisée */
+  font-size: 25px;
+  color: #333333;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 0;
+}
+#header.scrolled {
+  height: -0.5%;
+}
+
+#header.scrolled h1 {
+  margin-left: -5%; 
+}
+
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* Couleur et opacité du texte de superposition */
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.header-overlay.show-overlay {
+  opacity: 1;
+}
+
+.specialfont1 {
+font-family: 'Dancing Script', cursive;
+}
+.specialfont2 {
+font-family: 'Pangolin', cursive;
+color : black;
+}
+.specialfont3 {
+font-family: 'Pangolin', cursive;
+color : darkgrey;
+}
+.div-text {
+  padding: 10px;
+}
+.sous_titre {
+   word-wrap: break-word;
+   max-width: 60%;
+}
+.arrondir {
+-moz-border-radius:12px;
+-webkit-border-radius:12px;
+border-radius:30px;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
+}
+
+.square {
+	z-index: 0;
+	position : relative;
+  flex-shrink: 1;
+  flex-basis: 250px;
+  height: 250px;
+  background-color: #E6E6E6;
+  margin: 10px;
+  transition: transform 0.3s;
+  transform: scale(1);
+}
+.square.appear {
+  /* Animation d'apparition */
+  animation: appear 0.5s ease-in-out;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#bottomButton {
+  display: inline-block;
+  background-color: #bfbfbf;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 16px;
+  height: 20%;
+  width: 90%;
+  margin : 10px;
+  bottom : 10px;
+
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
+
+#bottomButtonDisabled {
+  display: inline-block;
+  background-color: #bfbfbf;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 16px;
+  height: 20%;
+  width: 90%;
+  margin : 10px;
+  bottom : 10px;
+
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
+#cornerButton {
+  
+  position: fixed;
+			bottom: 20px;
+      right: 50%;
+			transform: translateX(50%);
+			width: 60px;
+			height: 60px;
+			background-color: transparent;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			transition: background-color 0.3s;
+    
+}
+		#cornerButton:hover {
+			background-color: #2bc0c0;
+      
+		}
+
+		#cornerButton img {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+		}
+#bottomButton:hover {
+  background-color: #808080;
+}
+
+.square.active {
+  transform: scale(1.2);
+}
+
+.square.inactive {
+  transform: scale(0.8);
+  opacity: 0.5;
+}
+@keyframes wave {
+  0% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+
+.square {
+  position: relative;
+  
+  font-family: "Montserrat", sans-serif;
+}
+.square::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  animation: wave 3s infinite;
+  animation-delay: 120s;
+  border-radius: 30px;
+  opacity: 0;
+}
+#bottomBar {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+}
+
+/* Lorsque le lien est survolé, affichez la div */
+#leftcornerButton:hover + #divMail {
+    display: flex;
+}
+</style>
+</head>
+<body>
+<div id="header">
+    <h1 class = "centrer"  id="header-title">Soutien Scolaire</h1>
+  </div>
+<br><br><br><br><br><br><div class="container">
+    <div class = "square arrondir">
+        <br><br>
+        <h3 class="centrer">Me contacter :</h3>
+        <br>
+        <br>
+        <h4 class="centrer">07 84 30 00 84</h4>
+        <h4 class="centrer">ou</h4>
+        <h4 class="centrer">zachary.autres@proton.me</h4>
+    </div>
+</div>
+<a id="cornerButton" target ="blank"href=".\index.html"><img src=".\Images\maison.png" alt="Envoyer"></a>
+<div id="bottomBar">
+    <p>par tilook</p>
+  </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+  $(".square").hover(
+    function() {
+      $(this).addClass("active");
+      $(".square").not(this).addClass("inactive");
+    },
+    function() {
+      $(this).removeClass("active");
+      $(".square").not(this).removeClass("inactive");
+    }
+  );
+});
+
+$(document).ready(function() {
+  $(".square").hover(
+    function() {
+      $(this).addClass("active");
+      $(".square").not(this).addClass("inactive");
+      $(this).find("#bottomButton").addClass("hovered");
+    },
+    function() {
+      $(this).removeClass("active");
+      $(".square").not(this).removeClass("inactive");
+      $(this).find("#bottomButton").removeClass("hovered");
+    }
+  );
+});
+document.getElementById("bottomButtonDisabled").addEventListener("click", function(event) {
+    event.preventDefault(); // Empêcher l'action par défaut du lien
+
+    // Afficher une notification
+    alert("Page indisponible");
+   });
+
+
+var headerTitle = document.getElementById('header-title');
+
+// Fonction pour gérer l'événement de défilement
+function handleScroll() {
+  // Vérifier la position de défilement
+  if (window.scrollY > 0) {
+    // Modifier le contenu du titre
+    headerTitle.textContent = "Soutien Scolaire en mathématiques, niveau collège ";
+  } else {
+    // Rétablir le contenu du titre initial
+    headerTitle.textContent = "Soutien Scolaire";
+  }
+}
+window.addEventListener('scroll', handleScroll);
+window.addEventListener('scroll', function() {
+  var button = document.getElementById('bottomButton');
+  var scrollPosition = window.innerHeight + window.pageYOffset;
+
+  if (scrollPosition >= document.body.offsetHeight) {
+    button.classList.add('scrolled');
+  } else {
+    button.classList.remove('scrolled');
+  }
+});
+
+window.addEventListener('scroll', function() {
+  var header = document.getElementById('header');
+  var scrollPosition = window.pageYOffset;
+
+  if (scrollPosition > 0) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+  var squares = document.getElementsByClassName('square');
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].classList.add('appear');
+  }
+});
+</script>
+
+</body>
+</html>

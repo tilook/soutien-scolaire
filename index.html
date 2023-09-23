@@ -1,0 +1,449 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Soutien Scolaire</title>
+	<link rel = "icon" href=https://clg-le-ried.monbureaunumerique.fr/lectureFichiergw.do?ID_FICHIER=10003
+	type = "image/x-icon">
+
+<!-- Nécessaire pour le bon fonctionnement de la police Dancing Script : -->
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<style>
+.centrer {
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-top: auto;
+text-align: center;
+}
+
+#header {
+	position: fixed;
+  background-color: #f0f0f0;
+  padding: 1%;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  transition: width 0.3s ease;
+}
+#header h1 {
+  margin: 0;
+  font-size: 24px;
+  transition: margin-left 0.3s ease;
+  font-family: "Montserrat", sans-serif; /* Exemple de police personnalisée */
+  font-size: 25px;
+  color: #333333;
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 0;
+}
+#header.scrolled {
+  height: -0.5%;
+}
+
+#header.scrolled h1 {
+  margin-left: -5%; 
+}
+
+.header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* Couleur et opacité du texte de superposition */
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.header-overlay.show-overlay {
+  opacity: 1;
+}
+
+.specialfont1 {
+font-family: 'Dancing Script', cursive;
+}
+.specialfont2 {
+font-family: 'Pangolin', cursive;
+color : black;
+}
+.specialfont3 {
+font-family: 'Montserrat', cursive;
+font-weight: 100;
+font-size: large;
+color : black;
+}
+.div-text {
+  padding: 10px;
+}
+.sous_titre {
+   word-wrap: break-word;
+   max-width: 60%;
+}
+.arrondir {
+-moz-border-radius:12px;
+-webkit-border-radius:12px;
+border-radius:30px;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
+}
+
+.square {
+	z-index: 0;
+	position : relative;
+  flex-shrink: 1;
+  flex-basis: 275px;
+  height: 275px;
+  background-color: #E6E6E6;
+  margin: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size:medium;
+  transition: transform 0.3s;
+  transform: scale(1);
+}
+.square h3{
+  margin-top: 20px;
+  font-weight: lighter;
+}
+.square h5{
+  margin-top: 20px;
+  font-weight: lighter;
+}
+
+.square.appear {
+  /* Animation d'apparition */
+  animation: appear 0.5s ease-in-out;
+}
+
+.squareNom {
+	z-index: 0;
+	position : relative;
+  flex-shrink: 1;
+  flex-basis: 250px;
+  height: 170px;
+  background-color: #E6E6E6;
+  margin: 10px;
+  font-family: "Montserrat", sans-serif;
+  transition: transform 0.3s;
+  transform: scale(1);
+}
+
+.squareNom h4{
+  margin-top: 15%;
+}
+
+.squarePhoto {
+  
+	z-index: 0;
+	position : relative;
+  flex-shrink: 1;
+  flex-basis: 175px;
+  height: 170px;
+  line-height: 50px;
+  background-color: #E6E6E6;
+  margin: 10px;
+  font-family: "Montserrat", sans-serif;
+  transition: transform 0.3s;
+  transform: scale(1);
+  align-items: center;
+  border-radius: 30%;
+}
+.squarePhoto img{
+  width: 145px;
+  height: auto;
+  display: block;
+  margin: 11 auto;
+  border-radius: 30%;
+}
+
+.squareTarifs {
+  z-index: 0;
+	position : relative;
+  flex-shrink: 1;
+  flex-basis: 275px;
+  height: 175px;
+  background-color: #E6E6E6;
+  margin: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size:small;
+  transition: transform 0.3s;
+  transform: scale(1);
+}
+
+.squareTarifs h3 {
+  margin-top: 20px;
+}
+
+.square.appear {
+  /* Animation d'apparition */
+  animation: appear 0.5s ease-in-out;
+}
+
+
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#bottomButton {
+  display: inline-block;
+  background-color: #bfbfbf;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 16px;
+  height: 20%;
+  width: 90%;
+  margin : 10px;
+  bottom : 10px;
+
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
+
+#bottomButtonDisabled {
+  display: inline-block;
+  background-color: #bfbfbf;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+
+  font-size: 16px;
+  height: 20%;
+  width: 90%;
+  margin : 10px;
+  bottom : 10px;
+
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
+#cornerButton {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			width: 60px;
+			height: 60px;
+			background-color: transparent;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		#leftcornerButton:hover {
+			background-color: #2bc0c0;
+		}
+
+		#leftcornerButton img {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+		}
+
+    #leftcornerButton {
+			position: fixed;
+			bottom: 20px;
+			left: 20px;
+			width: 60px;
+			height: 60px;
+			background-color: transparent;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		#cornerButton:hover {
+			background-color: #2bc0c0;
+		}
+
+		#cornerButton img {
+			width: 100%;
+			height: 100%;
+			border-radius: 50%;
+		}
+#bottomButton:hover {
+  background-color: #808080;
+}
+
+.square {
+  position: relative;
+}
+.square::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid gray;
+  animation: wave 3s infinite;
+  animation-delay: 120s;
+  border-radius: 30px;
+  opacity: 0;
+}
+#bottomBar {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+
+    }
+
+
+</style>
+</head>
+<body>
+<div id="header">
+    <h1 class = "centrer"  id="header-title">Soutien Scolaire</h1>
+  </div>
+<br><br><br><br><br><br><div class="container">
+  <div class = "row">
+    <div class = "squarePhoto arrondir"><img src=".\Images\photo.png"></div>
+    <div class = "squareNom arrondir"><h4 class="centrer">Zachary ALISON</h4>
+      <h5 class="centrer">Élève de Tle spécialisé en maths & avec option maths expertes.</h5>
+    </div>
+  </div>
+  
+  <div class = "row">
+    <div class="square arrondir">
+      <h3 class="centrer">Description</h3>
+      <h5 class="centrer">Je vous propose un soutien scolaire en mathématique efficace, personnalisé en fonction des besoins de chaque collégien. Après avoir identifié leurs lacunes, je prépare des exercices accompagnés de corrections détaillées. Pour garantir leur réussite, je fournis également des fiches de révision pour chaque chapitre étudié ensemble.
+        Ces cours peuvent être effectués en visioconférence, ou bien directement chez vous.</h5>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="squareTarifs arrondir">
+      <h3 class="centrer specialfont3">Tarifs</h3>
+      <ul>
+        <li>1 heure : 20€</li>
+        <li>5 heures : 95€ <i>(-> 19€ de l'heure)</i></li>
+        <li>10 heures : 180€ <i>(-> 18€ de l'heure)</i></li>
+    </ul>
+    </div>
+  </div>
+</div>
+<a id="cornerButton" target ="blank"href=".\contact.html"><img src=".\Images\sms.png" alt="Envoyer"></a>
+<a id="leftcornerButton" target ="blank"href=".\contact.html"><img src=".\Images\mail.png" alt="Envoyer"></a>
+<div id="bottomBar">
+    <p>par tilook</p>
+  </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+  $(".square").hover(
+    function() {
+      $(this).addClass("active");
+      $(".square").not(this).addClass("inactive");
+    },
+    function() {
+      $(this).removeClass("active");
+      $(".square").not(this).removeClass("inactive");
+    }
+  );
+});
+
+$(document).ready(function() {
+  $(".square").hover(
+    function() {
+      $(this).addClass("active");
+      $(".square").not(this).addClass("inactive");
+      $(this).find("#bottomButton").addClass("hovered");
+    },
+    function() {
+      $(this).removeClass("active");
+      $(".square").not(this).removeClass("inactive");
+      $(this).find("#bottomButton").removeClass("hovered");
+    }
+  );
+});
+document.getElementById("bottomButtonDisabled").addEventListener("click", function(event) {
+    event.preventDefault(); // Empêcher l'action par défaut du lien
+
+    // Afficher une notification
+    alert("Page indisponible");
+   });
+
+
+var headerTitle = document.getElementById('header-title');
+
+// Fonction pour gérer l'événement de défilement
+function handleScroll() {
+  // Vérifier la position de défilement
+  if (window.scrollY > 0) {
+    // Modifier le contenu du titre
+    headerTitle.textContent = "Soutien Scolaire en mathématiques, niveau collège ";
+  } else {
+    // Rétablir le contenu du titre initial
+    headerTitle.textContent = "Soutien Scolaire";
+  }
+}
+window.addEventListener('scroll', handleScroll);
+window.addEventListener('scroll', function() {
+  var button = document.getElementById('bottomButton');
+  var scrollPosition = window.innerHeight + window.pageYOffset;
+
+  if (scrollPosition >= document.body.offsetHeight) {
+    button.classList.add('scrolled');
+  } else {
+    button.classList.remove('scrolled');
+  }
+});
+
+window.addEventListener('scroll', function() {
+  var header = document.getElementById('header');
+  var scrollPosition = window.pageYOffset;
+
+  if (scrollPosition > 0) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+  var squares = document.getElementsByClassName('square');
+  for (var i = 0; i < squares.length; i++) {
+    squares[i].classList.add('appear');
+  }
+});
+</script>
+
+</body>
+</html>
